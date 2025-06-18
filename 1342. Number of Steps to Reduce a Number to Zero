@@ -1,0 +1,25 @@
+class Solution {
+    public int numberOfSteps(int num) {
+        int ans=numero(num);
+        return ans;
+    
+    }
+  static int steps(int n,int total){
+    if(n==0){
+      return total;
+    }
+    if(n%2==0){
+      return steps((n/2), total+1);
+    }else{
+      return steps(n-1, total+1);
+    }
+
+  }
+
+  static int numero(int n){
+    return steps(n,0);
+
+  }
+        
+    
+}
