@@ -1,0 +1,27 @@
+class Solution {
+    int cameras=0; // no need to add static because we hae to set the cameras to 0 again as it moves to another node.
+
+// basically what we are doing is keeping the three states of nodes. 1 if the node is already covered by a camera from a diff node. 0 is the the node itself has a camera onit and -1 if the node needs a camera. 
+this is done in the dfs method so this post order traversal is necessary. first we give the value -1, keep inmind the recursion. then if the left or right nodes value is -1 so the parent node that is the node 
+itslef is flagged at 0 . then we traverse again if the node is 0 the node already has a camera so its set as 1. dry run it and ull understand
+
+    public int minCameraCover(TreeNode root) {
+        if (dfs(root)==-1) cameras++; 
+        return cameras;
+    }
+    private int dfs(TreeNode node){
+        if(node==null) return 1;
+        int left=dfs(node.left);
+        int right=dfs(node.right);
+
+        if(left==-1 || right==-1){
+            cameras++;
+            return 0;
+        }
+        if(left==0 || right==0){
+            return 1;
+        }
+        
+        return -1;
+    }
+}
