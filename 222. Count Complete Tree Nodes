@@ -1,0 +1,21 @@
+class Solution {
+    public int countNodes(TreeNode root) {
+        if (root==null) return 0;
+        int leftheight=getheight(root.left);
+        int rightheight=getheight(root.right);
+
+        if(leftheight==rightheight){
+            return (1<<leftheight)+countNodes(root.right);
+        }else{
+            return (1<<rightheight)+countNodes(root.left);
+        }
+    
+
+    } private int getheight(TreeNode node){
+        int height=0;
+        while(node!=null){
+            height++;
+            node=node.left;
+        }return height;
+    }
+}
