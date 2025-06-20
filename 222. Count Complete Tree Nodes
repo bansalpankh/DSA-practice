@@ -1,4 +1,11 @@
 class Solution {
+
+// basically the constrain was that tc <o(n) so we know if the ht of the left subtree and right subtree is same then the left subbtree is full , this is cal using 2^h -1+1 nodes . +1 is for the currentnodeitself
+we know a complete bt is not a perefct bit thats whey in the getheight fxn we only move towards the left. 
+if root is null then obv return 0. than we cal int left ht and rt height be getheight fxn. if the hts are euqal then cal the nodes in that subtree 1<<4 means 1000 in bit manip + countnodes again of the
+right subtree now so that will be treated likea tree again. if the heights are not equal then cal the no of nodes in the right subtree bec itll be perfect right? and then again ocunt nodesof the left subtree.
+using recursion
+
     public int countNodes(TreeNode root) {
         if (root==null) return 0;
         int leftheight=getheight(root.left);
